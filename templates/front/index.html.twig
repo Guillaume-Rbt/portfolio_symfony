@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Guillaume Robert | Portfolio{% endblock %}
+
+{% block body %}
+
+    {% for projet in projects %}
+
+ 
+    {{ form_label(contactForm.name) }}
+    {{ form_row(contactForm.name)}}
+    {{ form_help(contactForm.name)}}
+
+
+    {{ form_end(contactForm) }}
+
+    
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base_admin.html.twig' %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block body %}
+
+<h1> Liste des projets </h2>
+
+<a href="{{ path('add_project') }}" class="btn btn-primary"> Ajouter un projet </a>
+
+{% if (projects | length) > 0 %}
+<table class="table">
+  <thead>
+    <tr>
+      <th class="center-center" scope="col">#</th>
+      <th class="text-center" scope="col">Intitulé</th>
+      <th class="text-center" scope="col">Image</th>
+      <th class="text-center" scope="col">Description</th>
+      <th class="text-center" scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+
+ {% for project in projects %}
+ <tr>
+      <th class="align-middle" scope="row">{{ loop.index }}</th>
+      <td class="align-middle" >{{ project.name }}</td>
+      <td class="align-middle"><img src="{{asset('uploads/images/' ~ project.image)}}" /></td>
+      <td class="align-middle">{{ project.description }}</td>
+      <td class="align-middle">
+      <a href="{{ path('edit_project' , {"id": project.id})}}" class="btn btn-warning mb-1">Modifier le projet</a>
+      <a href="{{ path('remove_project' , {"id": project.id})}}" class="btn btn-danger">Supprimer le projet</a> 
+      </td>
+    </tr>
+
+
+ {% endfor %}
+
+     </tr>
+  </tbody>
+</table>
+{% else %}
+ <p> Il n'y a pas de projets pour le moment</p>
+{% endif %}
+
+
+
+
+{% endblock %}

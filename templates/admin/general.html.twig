@@ -1,0 +1,21 @@
+{% extends 'base_admin.html.twig' %}
+{% form_theme formConfig 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}{{ titlePage }}{% endblock %}
+
+{% block body %}
+
+<h1> Informations générales </h1>
+
+
+
+{{ form(formConfig) }}
+<script>
+    $(document).ready(function() {
+        // you may need to change this code if you are not using Bootstrap Datepicker
+        $('.js-datepicker').datepicker({
+            format: 'yyyy-mm-dd'
+        });
+    });
+</script>
+{% endblock %}
