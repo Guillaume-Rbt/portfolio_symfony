@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\ContactType;
+use App\Repository\ConfigRepository;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Mailer\Mailer;
@@ -17,8 +18,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class FrontController extends AbstractController
 {
     #[Route('/', name: 'app_front')]
-    public function index(ProjectRepository $repoProject, Request $request, MailerInterface $mailer): Response
-    {
+    public function index(ProjectRepository $repoProject, ConfigRepository $repoConfig,  Request $request, MailerInterface $mailer): Response
+    {   $config = $repoConfig->findAll()[0] ;
+        $projects = $repoProject->findAll();
         $contact = $this->createForm(ContactType::class);
         $contact->handleRequest($request);
 
@@ -41,7 +43,9 @@ class FrontController extends AbstractController
 
         return $this->render('front/index.html.twig', [
             'controller_name' => 'FrontController',
-            'contactForm' => $contact->createView()
-        ]);
+            'contactForm' => $contact->createView(),
+            'projects' => $projects, 
+            'config' => $config
+        ]); 
     }
 }

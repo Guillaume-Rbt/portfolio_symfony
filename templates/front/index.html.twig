@@ -1,18 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Guillaume Robert | Portfolio{% endblock %}
+
+{% block title %}Guillaume Robert | Portfolio
+{% endblock %}
 
 {% block body %}
 
-    {% for projet in projects %}
-
- 
-    {{ form_label(contactForm.name) }}
-    {{ form_row(contactForm.name)}}
-    {{ form_help(contactForm.name)}}
+	<section class="accueil">
 
 
-    {{ form_end(contactForm) }}
+		<div class="accueuil-text">
+			<h1>{{ config.firstname ~ " " ~ config.name}}</h1>
 
-    
+		</div>
+
+
+		<img src="{{ asset('assets/portfolio.png') }}" alt="photo Guillaume Robert">
+
+
+	</section>
+
+
 {% endblock %}

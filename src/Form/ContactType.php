@@ -26,6 +26,7 @@ class ContactType extends AbstractType
                 'attr'=> ['help' => "gjhj"],
                 'help'=>"ihl"
             ])
+            ->add("nom", TextType::class)
             ->add("prenom", TextType::class)
             ->add('adressMail', EmailType::class)
             ->add('sujet', TextType::class)
