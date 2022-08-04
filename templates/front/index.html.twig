@@ -6,17 +6,50 @@
 
 {% block body %}
 
-	<section class="accueil">
+	<section id="accueil" class="accueil">
 
-
-		<div class="accueuil-text">
-			<h1>{{ config.firstname ~ " " ~ config.name}}</h1>
-
+		<div class="accueil-txt">
+			<h2>À propos de moi</h2>
+			<span>Je m'appelle
+				{{ config.firstname }}, j'ai
+				{{ age }}
+				ans.
+			</span>
+			{{ config.description | raw }}
 		</div>
+		<img src="{{ asset('assets/portfolio.jpg') }}">
+	</section>
+
+	<section class="competences" id="competences">
+
+			<h2>Mes compétences</h2>
 
 
-		<img src="{{ asset('assets/portfolio.png') }}" alt="photo Guillaume Robert">
+	</section>
 
+	<section id="contact" class="contact">
+		<h2>Me contacter</h2>
+
+		{{ form_start(contactForm, {"attr":{ "class":"contact_form"}}) }}
+		<div class="field-group">
+			{{ form_widget(contactForm.nom, {"attr": { "placeholder": "Nom", "class": "form-field" }}) }}
+		</div>
+		<div class="field-group">
+			{{ form_widget(contactForm.prenom, {"attr": { "placeholder": "Prénom", "class": "form-field" }}) }}
+		</div>
+		<div class="field-group">
+			{{ form_widget(contactForm.adressMail, {"attr": { "placeholder": "adresse@monmail.com", "class": "form-field" }}) }}
+		</div>
+		<div class="field-group">
+			{{ form_widget(contactForm.sujet, {"attr": { "placeholder": "Sujet du message", "class": "form-field" }}) }}
+		</div>
+		<div class="field-group textArea">
+			{{ form_widget(contactForm.content, {"attr": {"placeholder": "Votre message...", "class": "form-field" }}) }}
+		</div>
+		<div class="field-group">
+			{{ form_row(contactForm.submit) }}
+		</div>
+		{{ form_end(contactForm) }}
 
 	</section>
 

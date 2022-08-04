@@ -1,9 +1,60 @@
-*, ::before, ::after {
+.shapedividers_com-6248 {
+  overflow: hidden;
+  position: relative;
+}
+
+.shapedividers_com-6248::before {
+  content: "";
+  font-family: "shape divider from ShapeDividers.com";
+  position: absolute;
+  bottom: -1px;
+  left: -1px;
+  right: -1px;
+  top: -1px;
+  z-index: 1;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: 474% 109px;
+  background-position: 48% 0%;
+  background-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.8 22.4" preserveAspectRatio="none"><path fill="%23ffde59" d="M101 22L94 8 84 18 76 7l-9 9-7-15-10 17-8-16-8 9-9 11-8-20-9 14-8 6V0h101z"/></svg>');
+  transition: all 0.3s;
+}
+
+@media (min-width: 768px) {
+  .shapedividers_com-6248::before {
+    background-size: 400% 109px;
+    background-position: 56% 0%;
+  }
+}
+@media (min-width: 1025px) {
+  .shapedividers_com-6248::before {
+    bottom: -0.1vw;
+    left: -0.1vw;
+    right: -0.1vw;
+    top: -0.1vw;
+    background-size: 240% 157px;
+    background-position: 43% 0%;
+  }
+}
+@media (min-width: 2100px) {
+  .shapedividers_com-6248::before {
+    background-size: 376% calc(2vw + 157px);
+  }
+}
+*,
+::before,
+::after {
   padding: 0;
   margin: 0;
-  box-sizing: 0;
+  box-sizing: border-box;
   list-style: none;
   font-family: "Roboto flex", sans-serif;
+}
+
+body,
+html {
+  background-color: #f1f1f1;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -12,14 +63,39 @@ a {
 }
 
 header {
-  padding: 10px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+header .header-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 10px;
+  background: #ffde59;
+}
+header .header-content .header-text {
+  width: 100%;
+  margin-top: 50px;
+}
+header .header-content .header-text p {
+  margin-left: 10vmin;
+}
+header .header-content .header-text p:nth-child(1) {
+  font-family: "Roboto flex", sans-serif;
+  font-weight: 600;
+  font-size: 30px;
 }
 header .logo-link {
   display: flex;
   width: 100px;
   aspect-ratio: 1/1;
+  margin-left: 10vmin;
+}
+header .separator {
+  width: 100%;
+  height: 150px;
 }
 
 .navbar {
@@ -34,20 +110,139 @@ header .logo-link {
   align-items: center;
 }
 
+p {
+  line-height: 30px;
+}
+
+h2 {
+  font-size: 25px;
+  padding: 15px 0 12px;
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding-right: 30px;
+  margin-bottom: 20px;
+}
+h2::before {
+  content: "";
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  bottom: 1px;
+  background-color: rgba(255, 222, 89, 0.4862745098);
+  border-radius: 2px;
+}
+h2::after {
+  content: "";
+  width: 30%;
+  height: 5px;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  background-color: #ffde59;
+  border-radius: 6px;
+}
+
 .accueil {
   display: flex;
   width: 100%;
+  flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
+  padding: 100px 0;
 }
-.accueil h1 {
-  font-size: clamp(40px, 5em, 60px);
-  min-width: -webkit-max-content;
-  min-width: -moz-max-content;
-  min-width: max-content;
+.accueil .accueil-txt {
+  width: clamp(300px, 50%, 500px);
+}
+.accueil .accueil-txt p {
+  margin-top: 20px;
+}
+.accueil .accueil-txt p:first-of-type {
+  display: inline;
 }
 .accueil img {
-  width: clamp(300px, 36%, 760px);
+  width: 300px;
+  box-shadow: 25px -25px 0 #171717;
+}
+
+.competences {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 100px 0;
+  background: #ececec;
+}
+
+.contact {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 100px 0;
+  background-color: #ececec;
+}
+
+.contact_form {
+  width: 50%;
+  min-width: 300px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 50px;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  grid-auto-flow: row;
+}
+
+.field-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.textArea {
+  grid-column: 1/span 2;
+  width: 100%;
+}
+.textArea textarea {
+  height: 120px;
+  resize: none;
+}
+
+.form-field {
+  padding: 5px;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid #333;
+  font-size: 1em;
+  font-family: "Roboto flex", sans-serif;
+  font-weight: 700;
+}
+
+button[type=submit] {
+  padding: 10px 15px;
+}
+
+@media screen and (max-width: 910px) {
+  .contact_form {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-auto-flow: row;
+  }
+  .textArea {
+    grid-column: 1/2;
+    width: 100%;
+  }
 }/*# sourceMappingURL=app.css.map */

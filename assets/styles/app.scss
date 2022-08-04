@@ -1,26 +1,81 @@
-*, ::before, ::after {
-    padding:0;
+@import './background_header.scss';
+
+*,
+::before,
+::after {
+    padding: 0;
     margin: 0;
-    box-sizing: 0;
+    box-sizing: border-box;
     list-style: none;
-    font-family: 'Roboto flex' , sans-serif;
+    font-family: 'Roboto flex', sans-serif;
 }
 
-a  {
+@mixin section($direction) {
+    display: flex;
+    width: 100%;
+    flex-direction: $direction;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding:100px 0;
+}
+
+body,
+html {
+    background-color: #f1f1f1;
+    scroll-behavior: smooth;
+
+}
+
+a {
     color: inherit;
     text-decoration: none;
 }
 
 header {
-    padding: 10px;
     display: flex;
     justify-content: space-between;
-    .logo-link {
-    display: flex;
-    width: 100px;
-    aspect-ratio: 1 / 1;
+    flex-wrap: wrap;
 
-}}
+    & .header-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 10px;
+        background: #ffde59;
+
+        & .header-text {
+            width:100%;
+            margin-top: 50px;
+
+            & p {
+                margin-left: 10vmin;
+            }
+
+            & p:nth-child(1) {
+                font-family: 'Roboto flex', sans-serif;
+                font-weight: 600;
+                font-size: 30px;
+            }
+
+        };
+    }
+
+    & .logo-link {
+        display: flex;
+        width: 100px;
+        aspect-ratio: 1 / 1;
+        margin-left: 10vmin;
+
+    }
+
+    & .separator {
+        width: 100%;
+        height: 150px
+    }
+}
 
 .navbar {
     width: 40%;
@@ -35,21 +90,126 @@ header {
     }
 }
 
-.accueil {
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-    align-items: center;
-    gap:20px;
-    flex-wrap: wrap;
+p {
+    line-height: 30px;
+}
 
-    & h1 {
-        font-size: clamp(40px, 5em, 60px);
-        min-width: max-content;
+h2 {
+    font-size: 25px;
+    padding:15px 0 12px;
+    position:relative;
+    width: max-content;
+    padding-right: 30px;
+    margin-bottom: 20px;
+
+    &::before {
+        content: "";
+        width: 100%;
+        height:3px;
+        position: absolute;
+        bottom:1px;
+        background-color: #ffde597c;
+        border-radius: 2px;
     }
 
-    & img {
-        width:clamp(300px, 36%, 760px)
+    &::after {
+        content: "";
+        width: 30%;
+        height:5px;
+        position: absolute;
+        bottom:0px;
+        left:0;
+        background-color: #ffde59;
+        border-radius: 6px;
     }
 }
 
+.accueil {
+   @include section(row);
+
+    & .accueil-txt {
+        width: clamp(300px, 50%, 500px);
+
+        p {
+            margin-top: 20px;
+        }
+
+        & p:first-of-type {
+            display: inline;
+            }
+        }
+
+    & img {
+        width: 300px;
+        box-shadow: 25px -25px 0 #171717
+    }
+}
+
+
+.competences {
+    @include section(row);
+    background: #ececec;
+    
+}
+
+.contact {
+    @include section(column);
+    background-color: #ececec;
+}
+
+.contact_form {
+    width: 50%;
+    min-width: 300px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 50px;
+    column-gap: 30px;
+    grid-auto-flow: row;
+}
+
+.field-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.textArea {
+    grid-column: 1 / span 2;
+    width: 100%;
+
+    & textarea {
+        height: 120px;
+        resize: none;
+    }
+}
+
+.form-field {
+    padding: 5px;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid #333;
+    font-size: 1em;
+    font-family: 'Roboto flex', sans-serif;
+    font-weight: 700;
+}
+
+button[type="submit"] {
+    padding: 10px 15px;
+}
+
+
+@media screen and (max-width:910px) {
+    .contact_form {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-auto-flow: row;
+    }
+
+    .textArea {
+        grid-column: 1 / 2;
+        width: 100%;
+    }
+}

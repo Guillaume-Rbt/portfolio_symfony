@@ -24,7 +24,7 @@ class Config
     #[ORM\Column(type: 'string' , length:255)]
     private $birthDate;
 
-    #[ORM\Column(type: 'string', length: 400)]
+    #[ORM\Column(type: 'text')]
     #[Assert\NotBlank(message:'Veuillez entrer une description')]
     private $description;
 

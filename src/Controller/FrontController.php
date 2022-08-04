@@ -19,8 +19,15 @@ class FrontController extends AbstractController
 {
     #[Route('/', name: 'app_front')]
     public function index(ProjectRepository $repoProject, ConfigRepository $repoConfig,  Request $request, MailerInterface $mailer): Response
-    {   $config = $repoConfig->findAll()[0] ;
+    { 
+        
+        $config = $repoConfig->findAll()[0] ;
         $projects = $repoProject->findAll();
+
+        $now = new \DateTime(date('Y-m-d'));
+        $birth = date_create_from_format('d/m/Y', $config->getBirthDate());
+        $age = $now->diff($birth, true)->format('%Y');
+         
         $contact = $this->createForm(ContactType::class);
         $contact->handleRequest($request);
 
@@ -45,7 +52,8 @@ class FrontController extends AbstractController
             'controller_name' => 'FrontController',
             'contactForm' => $contact->createView(),
             'projects' => $projects, 
-            'config' => $config
+            'config' => $config,
+            'age' => $age
         ]); 
     }
 }

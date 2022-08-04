@@ -22,28 +22,33 @@
 	</head>
 	<body>
 		<header>
+		<div class="header-content">
 			<a class='logo-link' href="/">
 				<img src="{{ asset('assets/logo.svg') }}" alt="Portfolio accueil" /> </a>
 				<nav class="navbar">
 
 					<ul class="navbar-list">
 						<li class="nav-item">
-							<a class="nav-link" href="#accueil">Accueil</a>
+							<a class="nav-link" href="{{ path('app_front')}}#">Accueil</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#accueil">À propos</a>
+							<a class="nav-link" href="{{ path('app_front')}}#àpropos">À propos</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#accueil">Compétences</a>
+							<a class="nav-link" href="{{ path('app_front')}}#competences">Compétences</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#accueil">Portfolio</a>
+							<a class="nav-link" href="{{ path('app_front')}}#portfolio">Portfolio</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#accueil">Contact</a>
+							<a class="nav-link" href="{{ path('app_front')}}#contact">Contact</a>
 						</li>
 					</ul>
 				</nav>
+				<div class="header-text"><p>Guillaume Robert</p><p>Web designer / développeur front-end</p></div>
+				</div>
+				<div class="separator shapedividers_com-6248"></div>
+				
 			</header>
 			<div class="container"> {% block body %}{% endblock %}
 				</div>
