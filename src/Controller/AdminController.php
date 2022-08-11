@@ -35,7 +35,7 @@ class AdminController extends AbstractController
     #[Route('/admin/general', name: 'admin_general')]
     #[Route('/admin/{id}/general', name: 'general_settings')]
 
-    public function homeGeneral(Config $config = null, EntityManagerInterface $manager, ConfigRepository $configRepo, Request $request)
+    public function homeGeneral(Config $config = null, EntityManagerInterface $manager, ConfigRepository $configRepo, Request $request, SluggerInterface $slugger)
     {
 
         if (!$config) {
@@ -50,13 +50,85 @@ class AdminController extends AbstractController
         $formConfig = $this->createForm(ConfigType::class, $config);
         $formConfig->handleRequest($request);
         if ($formConfig->isSubmitted() && $formConfig->isValid()) {
+
+            if ($formConfig->get('photo')->getData() !== null && $config->getPhoto() == null) {
+                $image = $formConfig->get('photo')->getData();
+                $imageName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($imageName);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
+
+                if (in_array($image->guessExtension(), ["png", "jpg", "jpeg", "PNG"])) {
+                    $image->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                    $config->setPhoto($newFilename);
+                    $this->addFlash('success', "Projet bien enregistré");
+                } else {
+                    $this->addFlash('danger', "Fichier non valide");
+                }
+            } else if ($formConfig->get('photo')->getData() !== null && $config->getPhoto() !== null) {
+                unlink($this->getParameter('images_directory') . '/' . $config->getPhoto());
+                $image = $formConfig->get('photo')->getData();
+                $imageName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($imageName);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
+
+                if (in_array($image->guessExtension(), ["png", "jpg", "jpeg", "PNG"])) {
+                    $image->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                    $config->setPhoto($newFilename);
+                    $this->addFlash('success', "Modifications bien enregistré");
+                } else {
+                    $this->addFlash('danger', "Fichier non valide");
+                }
+            }
+
+            if ($formConfig->get('CV')->getData() !== null && $config->getCv() == null) {
+                $file = $formConfig->get('CV')->getData();
+                $fileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($fileName);
+                $newDocname = $safeFilename . '-' . uniqid() . '.' . $file->guessExtension();
+
+                if (in_array($file->guessExtension(), ["pdf"])) {
+                    $file->move(
+                        $this->getParameter('docs_directory'),
+                        $newDocname
+                    );
+                    $config->setCv($newDocname);
+                    $this->addFlash('success', "Projet bien enregistré");
+                } else {
+                    $this->addFlash('danger', "Le CV doit etre un pdf");
+                }
+            } else if($formConfig->get('CV')->getData() !== null && $config->getCv() !== null) {
+                unlink($this->getParameter('docs_directory') . '/' . $config->getCv() );
+                $file = $formConfig->get('CV')->getData();
+                $fileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($fileName);
+                $newDocname = $safeFilename . '-' . uniqid() . '.' . $file->guessExtension();
+
+                if (in_array($file->guessExtension(), ["pdf"])) {
+                    $file->move(
+                        $this->getParameter('docs_directory'),
+                        $newDocname
+                    );
+                    $config->setCv($newDocname);
+                    $this->addFlash('success', "Projet bien enregistré");
+                } else {
+                    $this->addFlash('danger', "Le CV doit etre un pdf");
+                }
+            }
+
             $manager->persist($config);
             $manager->flush();
         }
 
         return $this->render('admin/general.html.twig', [
             'titlePage' => 'Informations générales',
-            'formConfig' => $formConfig->createView()
+            'formConfig' => $formConfig->createView(),
+            'config' => $config
         ]);
     }
 
@@ -68,36 +140,61 @@ class AdminController extends AbstractController
             $project = new Project();
             $theproject = null;
         }
-        $theproject = $project;
+        
 
         $formProject = $this->createForm(ProjectType::class, $project);
         $formProject->handleRequest($request);
 
         if ($formProject->isSubmitted() && $formProject->isValid()) {
-            $image = $formProject->get('image')->getData();
-            $imageName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
-            $safeFilename = $slugger->slug($imageName);
-            $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
 
-            if (in_array($image->guessExtension(), ["png", "jpg", "jpeg", "PNG"])) {
-                $image->move(
-                    $this->getParameter('images_directory'),
-                    $newFilename
-                );
-                $project->setImage($newFilename);
-                $this->addFlash('success', "Projet bien enregistré");
-            } else {
-                $this->addFlash('danger', "Fichier non valide");
-                return $this->redirectToRoute('add_project');
+            if ($formProject->get('image')->getData() !== null && $project->getImage() == null) {
+                $image = $formProject->get('image')->getData();
+
+                $imageName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($imageName);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
+
+                if (in_array($image->guessExtension(), ["png", "jpg", "jpeg", "PNG"])) {
+                    $image->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                    $project->setImage($newFilename);
+                    $this->addFlash('success', "Projet bien enregistré");
+                } else {
+                    $this->addFlash('danger', "Fichier non valide");
+                    return $this->redirectToRoute('add_project');
+                }
+            } else if ($formProject->get('image')->getData() !== null && $project->getImage() !== null) {
+                unlink($this->getParameter('images_directory') . '/' . $project->getImage());
+                $image = $formProject->get('image')->getData();
+
+                $imageName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($imageName);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
+
+                if (in_array($image->guessExtension(), ["png", "jpg", "jpeg", "PNG"])) {
+                    $image->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                    $project->setImage($newFilename);
+                    $this->addFlash('success', "Projet bien enregistré");
+                } else {
+                    $this->addFlash('danger', "Fichier non valide");
+                    return $this->redirectToRoute('add_project');
+                }
             }
             $manager->persist($project);
             $manager->flush();
+
+            return $this->redirectToRoute('edit_project', ['id' => $project->getId()]);
         }
         return $this->render('admin/project_form.html.twig', [
             'titlePage' => 'Administration',
             'formProject' => $formProject = $formProject->createView(),
             'editMode' => $project->getId() !== null,
-            "project" => $theproject
+            "project" => $project
         ]);
     }
 
@@ -116,7 +213,7 @@ class AdminController extends AbstractController
     #[Route("/admin/project/remove/{id}", name: "remove_project")]
     public function remove_project(Project $project, EntityManagerInterface $manager)
     {
-        unlink('../public/uploads/images/' .  $project->getImage() );
+        unlink('../public/uploads/images/' .  $project->getImage());
         $manager->remove($project);
         $manager->flush();
 

@@ -1,53 +1,66 @@
 {% extends 'base_admin.html.twig' %}
 {% form_theme formProject 'bootstrap_4_layout.html.twig' %}
 
-{% block title %}{% if (editMode) %}
- Modification du projet 
-{% else %}
- Nouveau projet 
-{% endif %}{% endblock %}
+{% block title %}
+	{% if (editMode) %}
+		Modification du projet
+	{% else %}
+		Nouveau projet
+	{% endif %}
+{% endblock %}
 
 {% block body %}
-{% if (editMode) %}
-<h1> Modifier le projet </h1>
-{% else %}
- <h1> Nouveau projet </h1>
-{% endif %}
+	{% if (editMode) %}
+		<h1>
+			Modifier le projet
+		</h1>
+	{% else %}
+		<h1>
+			Nouveau projet
+		</h1>
+	{% endif %}
 
-{% for message in app.flashes('success') %}
-<div class="alert-success m-2 p-2 "> {{ message }}</div>
-{% endfor %}
-{% for message in app.flashes("danger") %}
-<div class="alert-danger m-2 p-2"> {{ message }}</div>
-{% endfor %}
+	{% for message in app.flashes('success') %}
+		<div class="alert-success m-2 p-2 ">
+			{{ message }}</div>
+	{% endfor %}
+	{% for message in app.flashes("danger") %}
+		<div class="alert-danger m-2 p-2">
+			{{ message }}</div>
+	{% endfor %}
 
 
-{{ form_start(formProject) }}
-{{ form_row(formProject.name, {'label': 'Intitulé du projet' , 'attr': {'class':'mt-2'}} )}}
-{% if (project.image) %}
-{{ form_row(formProject.image,{'label': 'Image du projet', "attr":{ "data-file" : project.image }} )}}
-{% else %}
-{{ form_row(formProject.image,{'label': 'Image du projet', "attr":{ "data-file" : "" }} )}}
-{% endif %}
-{% if (project.image) %}
-<div id="preview" class="preview">
-<img src="{{ asset("uploads/images/" ~ project.image) }}" />
-</div>
-{% else %}
-<div id="preview" class="preview">
+	{{ form_start(formProject) }}
+	{{ form_row(formProject.name, {'label': 'Intitulé du projet' , 'attr': {'class':'mt-2'}}
+	)}}
+	{% if (project.image) %}
+		{{ form_row(formProject.image,{'label': 'Image du projet', "attr":{ "data-file" : project.image }, 'required':false} )}}
+	{% else %}
+		{{ form_row(formProject.image,{'label': 'Image du projet', "attr":{ "data-file" : "" }, "required":true} )}}
+	{% endif %}
+	{% if (project.image) %}
+		<div id="preview" class="preview">
+			<img src="{{ asset("uploads/images/" ~ project.image) }}"/>
+		</div>
+	{% else %}
+		<div id="preview" class="preview"></div>
+	{% endif %}
+	{{ form_row(formProject.description, {'label': 'Description du projet' , 'attr': {'class':'mt-2'}}
+	)}}
+	{{ form_row(formProject.technology, {'label': 'Technologies utilisées' , 'attr': {'class':'mt-2'}}
+	)}}
+	{{ form_row(formProject.github, {'label': 'Lien du repository Github du projet' , 'attr': {'class':'mt-2'}}
+	)}}
+	{{ form_row(formProject.site, {'label': 'Lien du site' , 'attr': {'class':'mt-2'}}
+	)}}
+	{{ form_row(formProject._token)}}
 
-</div>
-{% endif %}
-{{ form_row(formProject.description, {'label': 'Description du projet' , 'attr': {'class':'mt-2'}} )}}
-{{ form_row(formProject.technology, {'label': 'Technologies utilisées' , 'attr': {'class':'mt-2'}} )}}
-{{ form_row(formProject.github, {'label': 'Lien du repository Github du projet' , 'attr': {'class':'mt-2'}} )}}
-{{ form_row(formProject.site, {'label': 'Lien du site' , 'attr': {'class':'mt-2'}} )}}
-{{ form_row(formProject._token)}}
-
-{% if (editMode) %}
-<button type="submit" class="btn btn-secondary">Enregistrer les modifications </button>
-{% else %}
-<button type="submit" class="btn btn-primary">Enregistrer le projet </button>
-{% endif %}
+	{% if (editMode) %}
+		<button type="submit" class="btn btn-secondary">Enregistrer les modifications
+		</button>
+	{% else %}
+		<button type="submit" class="btn btn-primary">Enregistrer le projet
+		</button>
+	{% endif %}
 
 {% endblock %}

@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Config\FosCkEditorConfig;
 
 class ConfigType extends AbstractType
@@ -46,6 +47,8 @@ class ConfigType extends AbstractType
                 'label' => "Lien github",
                 'attr' => ["class" => 'mt-2']
             ])
+            ->add('photo', FileType::class, ['label' => 'Photo', "mapped" => false])
+            ->add('CV', FileType::class, ['label' => 'Curriculum Vitae', "mapped" => false])
             ->add("submit", SubmitType::class, [
                 'label' => "Enregistrer", 
                 'attr' => ["class" => 'mt-4 btn btn-primary']

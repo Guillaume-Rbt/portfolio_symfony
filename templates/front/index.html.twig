@@ -6,9 +6,11 @@
 
 {% block body %}
 
-	<section id="accueil" class="accueil">
+	<div class="accueil" style="background-image:url('{{ asset("assets/accueil.jpg") }}')"></div>
 
-		<div class="accueil-txt">
+	<section id="àpropos" class="àpropos">
+
+		<div class="àpropos-txt">
 			<h2>À propos de moi</h2>
 			<span>Je m'appelle
 				{{ config.firstname }}, j'ai
@@ -17,13 +19,102 @@
 			</span>
 			{{ config.description | raw }}
 		</div>
+
 		<img src="{{ asset('assets/portfolio.jpg') }}">
+
 	</section>
 
 	<section class="competences" id="competences">
+		<div class="header_section">
+			<h2>
+				Mes compétences
+			</h2>
+		</div>
 
-			<h2>Mes compétences</h2>
+		<div class="grid-icon">
+		<div><p>HTML 5 </p><svg  viewBox="0 0 56.35 75.13"><defs><style>.cls-1{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-3,.cls-4{}.cls-4{fill-rule:evenodd;}</style><clipPath id="clip-path" transform="translate(-9.39)"><rect class="cls-1" width="75.13" height="75.13"/></clipPath></defs><title>html_1</title><g id="Calque_2" data-name="Calque 2"><g id="Calque_1-2" data-name="Calque 1"><g class="cls-2"><path class="cls-3" d="M15.9,0h3.39V3.35h3.1V0h3.39V10.13H22.39V6.74h-3.1v3.39H15.91V0ZM30.23,3.36h-3V0H36.6V3.36h-3v6.77H30.23ZM38.08,0h3.53l2.18,3.56L46,0h3.53V10.13H46.12v-5l-2.33,3.6h-.06l-2.34-3.6v5H38.08ZM51.17,0h3.39V6.78h4.76v3.35H51.17Z" transform="translate(-9.39)"/><path class="cls-4" d="M15.8,69.1,9.39,14.77H65.74L59.33,69.09l-21.8,6Zm13-29.74-.61-6.83h25.5l.59-6.66H20.86L22.66,46H45.75L45,54.66l-7.43,2h0l-7.42-2-.47-5.31H23l.94,10.46,13.64,3.79,13.68-3.79,1.66-18.67L53,39.36Z" transform="translate(-9.39)"/></g></g></g></svg></div>
+		<div><p>CSS </p> <svg  viewBox="0 0 60.2 80.26"><title>html</title><g id="Calque_2" data-name="Calque 2"><g id="Calque_1-2" data-name="Calque 1"><path  d="M15.06,0h8.62V3.61h-5v3.6h5v3.61H15.06ZM25.4,0H34V3.14H29v.62h5V11H25.4V7.68h5V7.05h-5ZM35.75,0h8.62V3.14h-5v.62h5V11H35.75V7.68h5V7.05h-5Z"/><path class="cls-2" d="M30.07,80.26,6.85,73.81,0,15.77H60.2l-6.85,58ZM13.53,42.05l.64,7.11H38.84L38,58.39l-7.94,2.15h0L22.15,58.4l-.51-5.67H14.49l1,11.17L30.07,68l14.6-4.05L46.45,44l.18-1.91,1.28-14.41H12.25l.65,7.12H40.11l-.65,7.29Z"/></g></g></svg></div>
+		<div><p>Javascript</p><svg  viewBox="0 -2 55.52 57.1"><defs><style>.cls-1{fill:none;stroke:#ffde59;stroke-linecap:round;stroke-linejoin:round;stroke-width:5px;}</style></defs><title>javascript_1</title><g id="Calque_2" data-name="Calque 2"><g id="Calque_1-2" data-name="Calque 1"><path class="cls-1" d="M53,2.5,46.71,48.29,27.76,54.6,8.82,48.29,2.5,2.5Z"/><path class="cls-1" d="M13.55,15.13H23V40.39l-6.31-3.16M42,15.13H34.08a1.58,1.58,0,0,0-1.58,1.58v9.47a1.58,1.58,0,0,0,1.58,1.58h4.49a1.58,1.58,0,0,1,1.58,1.58,1.64,1.64,0,0,1,0,.22l-1.32,9.25L32.5,40.39"/></g></g></svg></div>
+		<div><p>Illustrator</p><svg  viewBox="-3 0 86.53 73.63"><defs><style>.cls-1{fill-rule:evenodd;}</style></defs><title>Illustrator</title><g id="Calque_2" data-name="Calque 2"><g id="Calque_1-2" data-name="Calque 1"><path class="cls-1" d="M33.91,2.25H19.3v3.3L0,72.63H11.2l5.33-20H37l5.22,20H54.92Zm.22,40H19.41l7.47-29.76,7.25,29.76Z"/><polygon class="cls-1" points="76.68 20.32 65.16 20.32 65.16 72.64 76.68 72.64 76.68 20.32 76.68 20.32"/><path class="cls-1" d="M70.77,0a6.68,6.68,0,1,0,0,13.36,6.72,6.72,0,0,0,6.76-6.68A6.72,6.72,0,0,0,70.77,0Z"/></g></g></svg></div>
+		<div><p>Photoshop</p><svg  viewBox="-4 0 76.55 55.3"><defs><style>.cls-1{fill:#01010100;fill-rule:evenodd;}</style></defs><title>Photoshop</title><g id="Calque_2" data-name="Calque 2"><g id="Calque_1-2" data-name="Calque 1"><path class="cls-1" d="M64.74,24.85V16c-1.46-.65-9.78-3-16.36-.52C38.9,19.12,39.24,30,42.84,34.29c4.66,5.54,16.25,7.6,14.35,13-1,2.81-5.57,3.3-9.61,2.36a23.9,23.9,0,0,1-7-3.11v9.34a21.1,21.1,0,0,0,7.2,2.24c5.09.55,11.47-.49,14.67-3.33C68.1,49.77,69,38.57,58.2,33.37c-9-4.33-8.83-5.57-8.76-7.79C49.52,22.61,55.76,20.78,64.74,24.85Z"/><path class="cls-1" d="M16.36.08h0C8.89-.18,0,.27,0,.27V57.65H9.12V36.88c12.25,1,25.67-3.76,25.67-18.43S23.82.34,16.36.08ZM18.73,27.8c-2.4.87-9.61.77-9.61.77v-20A31.28,31.28,0,0,1,18.64,9c4,1,6.58,4.41,6.58,9.49A9.31,9.31,0,0,1,18.73,27.8Z"/></g></g></svg></div>
+		<div><p>Wordpress</p><svg  aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path  d="M0 12v-.017c0-1.763.385-3.437 1.076-4.94l-.03.074l5.727 15.68a11.987 11.987 0 0 1-4.887-4.338l-.029-.048A11.543 11.543 0 0 1 0 12.098v-.103V12zm20.099-.609c0 .212-.015.421-.042.625l.003-.024a7.015 7.015 0 0 1-.171.822l.011-.049q-.117.468-.179.686t-.27.921q-.21.702-.273.905l-1.186 3.994l-4.338-12.889q.72-.047 1.374-.125a.458.458 0 0 0 .404-.286l.001-.003a.483.483 0 0 0-.04-.482l.001.002a.465.465 0 0 0-.447-.211h.002l-3.2.16q-1.17-.016-3.152-.16a.466.466 0 0 0-.321.081l.002-.001a.463.463 0 0 0-.178.231l-.001.003a.584.584 0 0 0-.023.292v-.004a.442.442 0 0 0 .14.257a.487.487 0 0 0 .303.125h.001l1.248.125l1.873 5.12l-2.622 7.865L4.65 6.38q.72-.047 1.374-.125a.458.458 0 0 0 .404-.286l.001-.003a.483.483 0 0 0-.04-.482l.001.002a.465.465 0 0 0-.447-.211h.002l-3.2.16q-.11 0-.359-.008t-.406-.008a12.04 12.04 0 0 1 4.222-3.925l.061-.031A11.857 11.857 0 0 1 11.998.004c1.575 0 3.08.304 4.458.855L16.375.83a12.092 12.092 0 0 1 3.73 2.333l-.009-.008H19.9c-.557 0-1.056.244-1.398.63l-.002.002c-.354.38-.571.892-.571 1.454v.03v-.002c0 .132.011.262.033.388l-.002-.014q.031.187.062.335c.033.137.076.257.13.37l-.005-.011q.094.21.141.328c.061.137.124.252.194.362l-.007-.011q.141.234.195.328t.226.374l.218.359c.595.94.958 2.079.982 3.301v.007zm-7.896 1.655l3.698 10.096c.012.066.04.125.08.173v-.001a11.74 11.74 0 0 1-3.978.686h-.028a11.54 11.54 0 0 1-3.441-.521l.082.022zm10.315-6.8A11.696 11.696 0 0 1 24 11.982v.025v-.001v.087c0 2.187-.603 4.233-1.653 5.981l.029-.053a12.088 12.088 0 0 1-4.297 4.315l-.056.031l3.667-10.586c.51-1.269.841-2.738.919-4.274l.001-.033v-.035a7.7 7.7 0 0 0-.1-1.242l.006.044z"/></svg></div>
+		<div><p>Github</p><svg  aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385c.6.105.825-.255.825-.57c0-.285-.015-1.23-.015-2.235c-3.015.555-3.795-.735-4.035-1.41c-.135-.345-.72-1.41-1.23-1.695c-.42-.225-1.02-.78-.015-.795c.945-.015 1.62.87 1.845 1.23c1.08 1.815 2.805 1.305 3.495.99c.105-.78.42-1.305.765-1.605c-2.67-.3-5.46-1.335-5.46-5.925c0-1.305.465-2.385 1.23-3.225c-.12-.3-.54-1.53.12-3.18c0 0 1.005-.315 3.3 1.23c.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23c.66 1.65.24 2.88.12 3.18c.765.84 1.23 1.905 1.23 3.225c0 4.605-2.805 5.625-5.475 5.925c.435.375.81 1.095.81 2.22c0 1.605-.015 2.895-.015 3.3c0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12Z" clip-rule="evenodd"/></svg></div>
+		<div><p>Figma</p><svg  aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path  d="M8.945 22a3.92 3.92 0 0 1-2.5-6.962a3.909 3.909 0 0 1 0-6.077A3.918 3.918 0 0 1 8.945 2h6.11a3.918 3.918 0 0 1 2.5 6.961a3.919 3.919 0 0 1-2.5 6.962a3.945 3.945 0 0 1-2.165-.644v2.8A3.938 3.938 0 0 1 8.945 22Zm-.022-6.076a2.153 2.153 0 1 0 2.187 2.153v-2.153H8.922h.001Zm6.133-6.077A2.153 2.153 0 1 0 17.22 12a2.161 2.161 0 0 0-2.165-2.153h.001Zm-6.11 0a2.153 2.153 0 0 0-.023 4.306h2.187V9.847H8.946ZM12.89 3.77v4.307h2.164a2.155 2.155 0 0 0 2.163-2.061v.435v-.528a2.162 2.162 0 0 0-2.162-2.153H12.89Zm-3.946 0a2.153 2.153 0 1 0 0 4.306h2.166V3.77H8.944Z"/></svg></div>
+		<div><p>Boostrap</p><svg aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="#ffed59" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M2 12a2 2 0 0 0 2-2V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2M2 12a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4a2 2 0 0 1 2-2"/><path d="M9 16V8h3.5a2 2 0 1 1 0 4H9h4a2 2 0 1 1 0 4H9z"/></g></svg></div>
+		<div><p>Joomla</p><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path  d="m15.539 14.059l-1.874 1.875l-1.777 1.777l-.347.35a3.993 3.993 0 0 1-3.785 1.048A2.41 2.41 0 0 1 3 18.567c0-1.138.792-2.092 1.852-2.342a3.993 3.993 0 0 1 1.047-3.811l.135-.135l1.777 1.778l-.138.135a1.48 1.48 0 0 0 0 2.092a1.462 1.462 0 0 0 2.09 0l.349-.349l1.775-1.778l1.877-1.879l1.775 1.781zm.693 4.988a3.986 3.986 0 0 1-3.996-.988l-.135-.139l1.773-1.777l.135.139a1.48 1.48 0 0 0 2.09 0a1.474 1.474 0 0 0-.002-2.086l-.35-.349l-1.773-1.777l-1.877-1.878l1.777-1.776l1.875 1.879l1.774 1.777l.349.349a3.962 3.962 0 0 1 1.058 3.766a2.407 2.407 0 0 1-.336 4.79a2.392 2.392 0 0 1-2.352-1.924l-.01-.006zm-8.001-8.962l1.881-1.879l1.777-1.777l.347-.346a3.972 3.972 0 0 1 3.949-1.002a2.408 2.408 0 1 1 2.699 2.716a3.98 3.98 0 0 1-1.012 3.925l-.137.139l-1.777-1.777l.139-.138a1.474 1.474 0 1 0-2.086-2.085l-.347.346l-1.777 1.776l-1.879 1.876l-1.777-1.774zm-1.99 1.984l-.346-.347a3.984 3.984 0 0 1-.999-3.965a2.414 2.414 0 0 1-1.874-2.35A2.41 2.41 0 0 1 5.43 3c1.197 0 2.19.875 2.378 2.019a3.99 3.99 0 0 1 3.734 1.061l.138.14l-1.778 1.776l-.137-.136a1.481 1.481 0 0 0-2.088 0a1.481 1.481 0 0 0-.004 2.092l.349.35l1.777 1.777l1.879 1.879l-1.775 1.777l-1.883-1.879l-1.778-1.777v-.01h-.001z"/></svg></div>
+		<div><p>VueJs</p><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path  d="m12 12.765l5.592-9.437h-3.276L12 7.33v.002L9.688 3.328h-3.28z"/><path  d="M18.461 3.332L12 14.235L5.539 3.332H1.992L12 20.672l10.008-17.34z"/></svg></div>
+		<div><p>PHP</p><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path  d="M2.15 16.78h1.57a.14.14 0 0 0 .14-.12l.35-1.82h1.22a4.88 4.88 0 0 0 1.51-.2A2.79 2.79 0 0 0 8 14a3.18 3.18 0 0 0 .67-.85a3.43 3.43 0 0 0 .36-1a2.43 2.43 0 0 0-.41-2.16a2.64 2.64 0 0 0-2.09-.78h-3a.16.16 0 0 0-.15.13L2 16.6a.19.19 0 0 0 0 .13a.17.17 0 0 0 .15.05zM5 10.62h1a1.45 1.45 0 0 1 1.08.29c.17.18.2.52.11 1a1.81 1.81 0 0 1-.57 1.12a2.17 2.17 0 0 1-1.33.33h-.8zm9.8-.95a2.7 2.7 0 0 0-1.88-.51h-1.19l.33-1.76a.15.15 0 0 0 0-.13a.16.16 0 0 0-.11 0h-1.57a.14.14 0 0 0-.14.12l-1.38 7.27a.13.13 0 0 0 0 .12a.13.13 0 0 0 .11.06h1.54a.14.14 0 0 0 .14-.13l.77-4.07h1.11c.45 0 .61.1.66.16a.81.81 0 0 1 0 .62l-.61 3.24a.13.13 0 0 0 0 .12a.14.14 0 0 0 .11.06h1.56a.16.16 0 0 0 .15-.13l.64-3.4a1.7 1.7 0 0 0-.24-1.64zm4.52-.51h-3.13a.14.14 0 0 0-.15.13l-1.46 7.31a.16.16 0 0 0 0 .13a.14.14 0 0 0 .11.05h1.63a.14.14 0 0 0 .15-.12l.37-1.82h1.27a5.28 5.28 0 0 0 1.56-.2a3 3 0 0 0 1.18-.64a3.31 3.31 0 0 0 .7-.85a3.45 3.45 0 0 0 .37-1a2.38 2.38 0 0 0-.42-2.16a2.81 2.81 0 0 0-2.18-.83zm.62 2.77a1.83 1.83 0 0 1-.6 1.12a2.28 2.28 0 0 1-1.37.33h-.8l.54-2.76h1a1.6 1.6 0 0 1 1.13.29c.16.18.16.52.1 1.02z"/></svg></div>
+		<div><p>SASS</p><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="#ffed59" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 10.523c2.46-.826 4.002-.826 4.002-2.155c0-1.366-1.347-1.366-2.735-1.366c-1.91 0-3.352.49-4.537 1.748c-.848.902-1.027 2.449-.153 3.307c.973.956 3.206 1.789 2.884 3.493c-.233 1.235-1.469 1.823-2.617 1.202c-.782-.424-.454-1.746.626-2.512s2.822-.992 4.1-.24c.98.575 1.046 1.724.434 2.193"/></g></svg></div>
+		<div><p>Symfony</p><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path  d="M256 8C119 8 8 119 8 256s111 248 248 248s248-111 248-248S393 8 256 8zm133.74 143.54c-11.47.41-19.4-6.45-19.77-16.87c-.27-9.18 6.68-13.44 6.53-18.85c-.23-6.55-10.16-6.82-12.87-6.67c-39.78 1.29-48.59 57-58.89 113.85c21.43 3.15 36.65-.72 45.14-6.22c12-7.75-3.34-15.72-1.42-24.56c4-18.16 32.55-19 32 5.3c-.36 17.86-25.92 41.81-77.6 35.7c-10.76 59.52-18.35 115-58.2 161.72c-29 34.46-58.4 39.82-71.58 40.26c-24.65.85-41-12.31-41.58-29.84c-.56-17 14.45-26.26 24.31-26.59c21.89-.75 30.12 25.67 14.88 34c-12.09 9.71.11 12.61 2.05 12.55c10.42-.36 17.34-5.51 22.18-9c24-20 33.24-54.86 45.35-118.35c8.19-49.66 17-78 18.23-82c-16.93-12.75-27.08-28.55-49.85-34.72c-15.61-4.23-25.12-.63-31.81 7.83c-7.92 10-5.29 23 2.37 30.7l12.63 14c15.51 17.93 24 31.87 20.8 50.62c-5.06 29.93-40.72 52.9-82.88 39.94c-36-11.11-42.7-36.56-38.38-50.62c7.51-24.15 42.36-11.72 34.62 13.6c-2.79 8.6-4.92 8.68-6.28 13.07c-4.56 14.77 41.85 28.4 51-1.39c4.47-14.52-5.3-21.71-22.25-39.85c-28.47-31.75-16-65.49 2.95-79.67C204.23 140.13 251.94 197 262 205.29c37.17-109 100.53-105.46 102.43-105.53c25.16-.81 44.19 10.59 44.83 28.65c.25 7.69-4.17 22.59-19.52 23.13z"/></svg></div>
+		</div>
 
+		<div class="competences_text">
+
+			<p>Je suis capable de créer et d'intégrer les maquettes de sites web en assurant le responsive design afin que l'interface soit adaptée à tous les supports de navigation internet en utilisant les technologies et les outils adéquats.
+			</p>
+
+			<p>
+				J'assure également l'adaptation et la création des éléments visuels qui composent le site (logos, vidéos, images, illustrations) afin qu'ils s'insètrent au mieux dans le style graphique général. J'ai également la possibilité d'effectuer le traitement sonore des vidéos et autres médias audio en cas de besoin grâce à mon savoir faire acquis avec mon activité musicale.
+			</p>
+		</div>
+
+
+	</section>
+
+	<section class="portfolio" id="portfolio">
+
+		<div class="header_section">
+			<h2>
+				Portfolio
+			</h2>
+		</div>
+
+
+		<div class="portfolio_container">
+
+			{% for project in projects %}
+
+				<a href="#pop-{{ project.name }}">
+					<div class="projet">
+						<img src="{{ asset('uploads/images/' ~ project.image) }}"/>
+					</div>
+				</a>
+
+			{% endfor %}
+
+		</div>
+		{% for project in projects %}
+			<div id="pop-{{ project.name }}" class="popup">
+				<div class="pop_projet">
+					<h2>
+						{{ project.name }}</h2>
+					<img src="{{ asset('uploads/images/' ~ project.image) }}"/>
+					<h2>Description</h2>
+					<p>
+						{{ project.description}}</p>
+						<h2>Technologies</h2>
+					
+					<p>{{ project.technology }}</p>
+					<a href="#">
+						<div class="close">
+							<span class="material-symbols-outlined">close</span>
+						</div>
+					</a>
+					<div>
+						{% if (project.site) %}
+							<a href="{{project.site}}" target="_blank">
+								<span class="material-symbols-outlined">language</span>
+							</a>
+						{% endif %}
+						<a target="_blank" href="{{ project.github}}">
+							<span class="iconify" data-icon="codicon:github"></span>
+						</a>
+					</div>
+
+				</div>
+
+			</div>
+		{% endfor %}
 
 	</section>
 
@@ -32,21 +123,21 @@
 
 		{{ form_start(contactForm, {"attr":{ "class":"contact_form"}}) }}
 		<div class="field-group">
-			{{ form_widget(contactForm.nom, {"attr": { "placeholder": "Nom", "class": "form-field" }}) }}
+			{{ form_widget(contactForm.nom, {"attr": { "placeholder": "Nom", "class": "form-field", "autocomplete":"off" }}) }}
 		</div>
 		<div class="field-group">
-			{{ form_widget(contactForm.prenom, {"attr": { "placeholder": "Prénom", "class": "form-field" }}) }}
+			{{ form_widget(contactForm.prenom, {"attr": { "placeholder": "Prénom", "class": "form-field", "autocomplete":"off" }}) }}
 		</div>
 		<div class="field-group">
-			{{ form_widget(contactForm.adressMail, {"attr": { "placeholder": "adresse@monmail.com", "class": "form-field" }}) }}
+			{{ form_widget(contactForm.adressMail, {"attr": { "placeholder": "adresse@monmail.com", "class": "form-field", "autocomplete":"off" }}) }}
 		</div>
 		<div class="field-group">
-			{{ form_widget(contactForm.sujet, {"attr": { "placeholder": "Sujet du message", "class": "form-field" }}) }}
+			{{ form_widget(contactForm.sujet, {"attr": { "placeholder": "Sujet du message", "class": "form-field", "autocomplete":"off" }}) }}
 		</div>
 		<div class="field-group textArea">
-			{{ form_widget(contactForm.content, {"attr": {"placeholder": "Votre message...", "class": "form-field" }}) }}
+			{{ form_widget(contactForm.content, {"attr": {"placeholder": "Votre message...", "class": "form-field", "autocomplete":"off" }}) }}
 		</div>
-		<div class="field-group">
+		<div class="field-group submit">
 			{{ form_row(contactForm.submit) }}
 		</div>
 		{{ form_end(contactForm) }}

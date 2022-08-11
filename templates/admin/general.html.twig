@@ -9,13 +9,36 @@
 
 
 
-{{ form(formConfig) }}
-<script>
-    $(document).ready(function() {
-        // you may need to change this code if you are not using Bootstrap Datepicker
-        $('.js-datepicker').datepicker({
-            format: 'yyyy-mm-dd'
-        });
-    });
-</script>
+{{ form_start(formConfig) }}
+
+{{ form_row(formConfig.name)}}
+{{ form_row(formConfig.firstname)}}
+{{ form_row(formConfig.birthDate)}}
+{{ form_row(formConfig.description)}}
+{{ form_row(formConfig.phone)}}
+{{ form_row(formConfig.email)}}
+{{ form_row(formConfig.linkedin_link)}}
+{{ form_row(formConfig.github_link)}}
+
+{% if (config.photo) %}
+{{ form_row(formConfig.photo, {'required':false, 'attr': {"data-file" : config.photo}})}}
+{% else %}
+{{ form_row(formConfig.photo, {'required':true })}}
+{% endif %}
+
+{% if (config.CV) %}
+{{ form_row(formConfig.CV, {'required':false, 'attr': {"data-file" : config.CV}})}}
+{% else %}
+{{ form_row(formConfig.CV, {'required':true })}}
+{% endif %}
+
+
+{{ form_row(formConfig.submit)}}
+
+
+
+
+{{ form_end(formConfig) }}
+
+
 {% endblock %}

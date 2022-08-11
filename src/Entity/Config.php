@@ -44,6 +44,12 @@ class Config
     )]
     private $email;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $cv;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $photo;
+
 
 
     public function getId(): ?int
@@ -143,6 +149,30 @@ class Config
     public function setEmail(?string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getCv(): ?string
+    {
+        return $this->cv;
+    }
+
+    public function setCv(string $cv): self
+    {
+        $this->cv = $cv;
+
+        return $this;
+    }
+
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(string $photo): self
+    {
+        $this->photo = $photo;
 
         return $this;
     }

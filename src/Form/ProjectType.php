@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,12 +20,13 @@ class ProjectType extends AbstractType
             ->add('name', TextType::class)
             ->add('image', TextType::class)
             ->add('image', FileType::class, [
-                "mapped" => false
+                "mapped" => false,
+                "required" =>false
             ])
             ->add('description', TextareaType::class)
             ->add('technology')
-            ->add('github')
-            ->add('site')
+            ->add('github', UrlType::class)
+            ->add('site', UrlType::class)
         ;
     }
 
