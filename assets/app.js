@@ -12,6 +12,8 @@ import './styles/app.css';
 // start the Stimulus application
 import './bootstrap';
 
+scrollPy();
+
 if (document.getElementById("project_image")) {
     const inputFile = document.getElementById("project_image");
     const preview = document.getElementById("preview");
@@ -88,9 +90,10 @@ if (document.getElementById("config_photo")) {
     }
 }
 
-
-if(document.getElementById("navbar")) {
+function scrollPy() {
     var sections = document.querySelectorAll("section");
+    if(document.getElementById("navbar") && document.getElementById("àpropos") ) {
+    
     var duration;
     var controller = new ScrollMagic.Controller()
     for ( var i = 0 ; i < sections.length ; i++ ) {
@@ -100,12 +103,13 @@ if(document.getElementById("navbar")) {
         new ScrollMagic.Scene({triggerElement: '#'+ sectionId, "duration":duration})
 					.setClassToggle('#' + link, "active")
                     .addTo(controller);
-}}
-
+}
+    }
+}
 
 if(document.getElementById("portfolio")) {
     var closes = document.querySelectorAll(".close");
-    var popups = document.querySelectorAll(".popup");
+  
  
     for( close of closes) {
         close.addEventListener("click", function (e) {
@@ -124,15 +128,29 @@ if(document.getElementById("portfolio")) {
 
 
 
+
+
+
+window.addEventListener("resize" , function() {
+    if(window.innerWidth > 700) {
+        document.querySelector("body").classList.remove("with-menu"); 
+    }
+    scrollPy();
+})
+
+
 var iconMenu = document.querySelector(".menu-icon");
 
 iconMenu.addEventListener("click" , function () {
     document.querySelector("body").classList.toggle("with-menu"); 
 })
 
-window.addEventListener("resize" , function() {
-    if(window.innerWidth > 700) {
-        document.querySelector("body").classList.remove("with-menu"); 
+const accueil = document.getElementById("accueil-text");
 
-    }
+window.addEventListener("load" , function () {
+    var TL = gsap.timeline({paused :"true"});
+    TL
+    .staggerFrom(accueil, 2 , {top:-200 , opacity :0 , ease: CustomEase.create("custom", "M0,0 C0.126,0.382 0.338,0.916 0.496,1.064 0.6,1.162 0.732,1.072 0.848,1.022 0.895,1.001 0.987,1 1,1 ")}, 0)
+
+    TL.play()
 })

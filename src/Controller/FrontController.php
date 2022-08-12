@@ -56,4 +56,15 @@ class FrontController extends AbstractController
             'age' => $age
         ]); 
     }
+
+
+    #[Route("/mentions-legales", name:"mentions_legales")]
+    public function mentions_legales (ConfigRepository $repoConfig) {
+        $config = $repoConfig->findAll()[0];
+
+        return $this->render('front/mentions-legales.html.twig', [
+            'config' => $config
+        ]);
+    }
+
 }
