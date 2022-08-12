@@ -276,6 +276,15 @@ h2::after {
   width: clamp(300px, 70%, 500px);
   color: #f1f1f1;
 }
+.competences .competences_text a {
+  margin-top: 20px;
+  display: block;
+  padding: 10px 15px;
+  background: #ffed59;
+  text-align: center;
+  color: #232323;
+  border-radius: 10px;
+}
 
 .container-icon {
   display: flex;
