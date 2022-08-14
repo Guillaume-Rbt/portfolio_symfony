@@ -32,15 +32,27 @@ class FrontController extends AbstractController
         $contact->handleRequest($request);
 
         if($contact->isSubmitted() && $contact->isValid()) {
-            
-            $mail = (new Email())
-            ->to(New Address("robert.guillaume70@laposte.net"))
-            ->from('contact@portfolio.fr')
+            $contactFormData = $contact->getData();
+            $mail = (new TemplatedEmail())
+            ->to(New Address("contact@guillaume-robert-webdev.fr"))
+            ->from('contact@guillaume-robert-webdev.fr')
             ->subject('Contact portfolio')
-            ->text($contact->get('content')->getData());
-            
+            ->htmlTemplate('email/contact.html.twig')
+            ->context([
+                'nom' => $contactFormData['nom'],
+                'prenom' =>$contactFormData['prenom'],
+                "adressMail" => $contactFormData['adressMail'],
+                'sujet' =>$contactFormData['sujet'],
+                'content' =>$contactFormData['content']
+            ]);
+
             $mailer->send($mail);
+
+            $this->addFlash('success', 'Votre message a bien été envoyé');
+            $this->redirectToRoute('app_front');
         }
+
+        
         
 
         return $this->render('front/index.html.twig', [

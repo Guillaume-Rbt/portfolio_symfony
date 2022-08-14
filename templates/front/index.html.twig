@@ -6,6 +6,10 @@
 
 {% block body %}
 
+{% for message in app.flashes('success') %}
+<div class="success"> {{ message }} </div>
+{% endfor %}
+
 	<div class="accueil" style="background-image:url('{{ asset("assets/accueil.jpg") }}')">
 	<div id="accueil-text" class="accueil-text">
 		<h1>Guillaume Robert</h1>
