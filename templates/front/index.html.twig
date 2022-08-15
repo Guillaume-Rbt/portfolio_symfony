@@ -116,9 +116,11 @@
 								<span class="material-symbols-outlined">language</span>
 							</a>
 						{% endif %}
+						{% if (project.github) %}
 						<a title="voir le dépot git de  {{ project.name }} " target="_blank" href="{{ project.github}}">
 							<span class="iconify" data-icon="codicon:github"></span>
 						</a>
+						{% endif %}
 					</div>
 
 				</div>

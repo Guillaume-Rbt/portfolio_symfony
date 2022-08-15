@@ -244,6 +244,42 @@ h2::after {
   border-radius: 10px;
 }
 
+.success {
+  padding: 10px 25px;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  position: fixed;
+  top: 100px;
+  right: 5px;
+  z-index: 800;
+  -webkit-animation: animSucess 2.5s linear forwards;
+          animation: animSucess 2.5s linear forwards;
+}
+
+@-webkit-keyframes animSucess {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes animSucess {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 .container-icon {
   display: flex;
   width: clamp(300px, 60%, 600px);

@@ -89,7 +89,7 @@ class Project
         return $this->github;
     }
 
-    public function setGithub(string $github): self
+    public function setGithub(?string $github): self
     {
         $this->github = $github;
 
