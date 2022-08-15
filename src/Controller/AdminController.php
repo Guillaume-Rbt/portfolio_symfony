@@ -63,9 +63,9 @@ class AdminController extends AbstractController
                         $newFilename
                     );
                     $config->setPhoto($newFilename);
-                    $this->addFlash('success', "Projet bien enregistré");
+                    $this->addFlash('successConfig', "Projet bien enregistré");
                 } else {
-                    $this->addFlash('danger', "Fichier non valide");
+                    $this->addFlash('dangerConfig', "Fichier non valide");
                 }
             } else if ($formConfig->get('photo')->getData() !== null && $config->getPhoto() !== null) {
                 unlink($this->getParameter('images_directory') . '/' . $config->getPhoto());
@@ -80,9 +80,9 @@ class AdminController extends AbstractController
                         $newFilename
                     );
                     $config->setPhoto($newFilename);
-                    $this->addFlash('success', "Modifications bien enregistré");
+                    $this->addFlash('successConfig', "Modifications bien enregistré");
                 } else {
-                    $this->addFlash('danger', "Fichier non valide");
+                    $this->addFlash('dangerConfig', "Fichier non valide");
                 }
             }
 
@@ -98,9 +98,9 @@ class AdminController extends AbstractController
                         $newDocname
                     );
                     $config->setCv($newDocname);
-                    $this->addFlash('success', "Projet bien enregistré");
+                    $this->addFlash('successConfig', "Informations bien enregistrées");
                 } else {
-                    $this->addFlash('danger', "Le CV doit etre un pdf");
+                    $this->addFlash('dangerConfig', "Le CV doit etre un pdf");
                 }
             } else if($formConfig->get('CV')->getData() !== null && $config->getCv() !== null) {
                 unlink($this->getParameter('docs_directory') . '/' . $config->getCv() );
@@ -115,15 +115,16 @@ class AdminController extends AbstractController
                         $newDocname
                     );
                     $config->setCv($newDocname);
-                    $this->addFlash('success', "Projet bien enregistré");
+                    $this->addFlash('successConfig', "Informations bien enregistrées");
                 } else {
-                    $this->addFlash('danger', "Le CV doit etre un pdf");
+                    $this->addFlash('dangerConfig', "Le CV doit etre un pdf");
                 }
             }
-
+            $this->addFlash('successConfig', "Informations bien enregistrées");
             $manager->persist($config);
             $manager->flush();
         }
+            
 
         return $this->render('admin/general.html.twig', [
             'titlePage' => 'Informations générales',
@@ -187,7 +188,7 @@ class AdminController extends AbstractController
             }
             $manager->persist($project);
             $manager->flush();
-
+            $this->addFlash('success', "Projet bien enregistré");
             return $this->redirectToRoute('edit_project', ['id' => $project->getId()]);
         }
         return $this->render('admin/project_form.html.twig', [

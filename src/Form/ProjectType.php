@@ -26,7 +26,7 @@ class ProjectType extends AbstractType
             ->add('description', TextareaType::class)
             ->add('technology')
             ->add('github', UrlType::class)
-            ->add('site', UrlType::class)
+            ->add('site', UrlType::class, ['required'=> false])
         ;
     }
 

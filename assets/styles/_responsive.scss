@@ -27,13 +27,13 @@
 
     .navbar {
         position: fixed;
-        width:250px;
+        width:100vw;
         height:calc(100vh - 100px);
         background-color: #232323;
         top:100px;
         right: 0;
         min-width: unset;
-        transform: translateX(250px);
+        transform: translateX(100vw);
         transition: transform 0.3s ease-in;
         border-left: 2px solid #ffde59;
         border-top: 2px solid #ffde59;
@@ -51,6 +51,19 @@
         transform: translateX(0);
         transition: transform 0.3s ease-in;
 
+    }
+
+    .with-menu .menu-icon {
+        & span:nth-child(1) {
+            transform: translateY(10px) rotateZ(-45deg);
+        }
+        & span:nth-child(2) {
+            opacity:0;
+        }
+
+        & span:nth-child(3) {
+            transform: translateY(-12px) rotateZ(45deg);
+        }
     }
     
 }

@@ -68,7 +68,7 @@ if (document.getElementById("config_photo")) {
         document.querySelector("#config_photo+label").innerHTML = parts.pop();
     })
 
-    var inputCv  = document.getElementById("config_CV");
+    var inputCv = document.getElementById("config_CV");
     inputCv.addEventListener("change", function () {
         var fileName = inputCv.value;
         var parts = fileName.split("\\");
@@ -92,34 +92,34 @@ if (document.getElementById("config_photo")) {
 
 function scrollPy() {
     var sections = document.querySelectorAll("section");
-    if(document.getElementById("navbar") && document.getElementById("àpropos") ) {
-    
-    var duration;
-    var controller = new ScrollMagic.Controller()
-    for ( var i = 0 ; i < sections.length ; i++ ) {
-        var sectionId = sections[i].getAttribute("id");
-        duration = sections[i].offsetHeight;
-        var link = document.querySelector("li[data-link='" + sectionId + "']").getAttribute("id")
-        new ScrollMagic.Scene({triggerElement: '#'+ sectionId, "duration":duration})
-					.setClassToggle('#' + link, "active")
-                    .addTo(controller);
-}
+    if (document.getElementById("navbar") && document.getElementById("àpropos")) {
+
+        var duration;
+        var controller = new ScrollMagic.Controller()
+        for (var i = 0; i < sections.length; i++) {
+            var sectionId = sections[i].getAttribute("id");
+            duration = sections[i].offsetHeight;
+            var link = document.querySelector("li[data-link='" + sectionId + "']").getAttribute("id")
+            new ScrollMagic.Scene({ triggerElement: '#' + sectionId, "duration": duration })
+                .setClassToggle('#' + link, "active")
+                .addTo(controller);
+        }
     }
 }
 
-if(document.getElementById("portfolio")) {
+if (document.getElementById("portfolio")) {
     var closes = document.querySelectorAll(".close");
-  
- 
-    for( close of closes) {
+
+
+    for (close of closes) {
         close.addEventListener("click", function (e) {
-            
+
             e.preventDefault()
             var scroll = window.scrollY;
             window.location.href = "#";
-                window.scrollTo({
+            window.scrollTo({
                 top: scroll,
-                left:0,
+                left: 0,
             })
 
         })
@@ -131,9 +131,9 @@ if(document.getElementById("portfolio")) {
 
 
 
-window.addEventListener("resize" , function() {
-    if(window.innerWidth > 700) {
-        document.querySelector("body").classList.remove("with-menu"); 
+window.addEventListener("resize", function () {
+    if (window.innerWidth > 700) {
+        document.querySelector("body").classList.remove("with-menu");
     }
     scrollPy();
 })
@@ -141,16 +141,29 @@ window.addEventListener("resize" , function() {
 
 var iconMenu = document.querySelector(".menu-icon");
 
-iconMenu.addEventListener("click" , function () {
-    document.querySelector("body").classList.toggle("with-menu"); 
+iconMenu.addEventListener("click", function () {
+    document.querySelector("body").classList.toggle("with-menu");
 })
 
 const accueil = document.getElementById("accueil-text");
 
-window.addEventListener("load" , function () {
-    var TL = gsap.timeline({paused :"true"});
+window.addEventListener("load", function () {
+    var TL = gsap.timeline({ paused: "true" });
     TL
-    .staggerFrom(accueil, 2 , {top:-200 , opacity :0 , ease: CustomEase.create("custom", "M0,0 C0.126,0.382 0.338,0.916 0.496,1.064 0.6,1.162 0.732,1.072 0.848,1.022 0.895,1.001 0.987,1 1,1 ")}, 0)
+        .staggerFrom(accueil, 2, { top: -200, opacity: 0, ease: CustomEase.create("custom", "M0,0 C0.126,0.382 0.338,0.916 0.496,1.064 0.6,1.162 0.732,1.072 0.848,1.022 0.895,1.001 0.987,1 1,1 ") }, 0)
 
     TL.play()
 })
+
+if (document.getElementsByClassName('with-menu')) {
+    var menu_items = document.querySelectorAll('.nav-link');
+    for (var n = 0; n < menu_items.length; n++) {
+        menu_items[n].addEventListener("click", function () {
+
+            setTimeout(function() {
+                document.querySelector("body").classList.remove("with-menu");
+            }, 500)
+            
+        })
+    }
+}

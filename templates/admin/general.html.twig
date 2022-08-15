@@ -7,7 +7,14 @@
 
 <h1> Informations générales </h1>
 
-
+	{% for message in app.flashes('successConfig') %}
+		<div class="alert-success m-2 p-2 ">
+			{{ message }}</div>
+	{% endfor %}
+	{% for message in app.flashes("dangerConfig") %}
+		<div class="alert-danger m-2 p-2">
+			{{ message }}</div>
+	{% endfor %}
 
 {{ form_start(formConfig) }}
 

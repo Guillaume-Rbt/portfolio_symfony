@@ -25,25 +25,6 @@ a {
   text-decoration: none;
 }
 
-.success {
-  position: fixed;
-  top:100;
-  right:0;
-  background-color: #d4edda;
-  color: #155724;
-  z-index: 800;
-  padding: 10px 25px;
-  border-radius: 10px;
-  animation : 3s linear forwards animFlashes
-}
-
-@keyframes animFlashes {
-  0% {opacity: 1}
-  50% {opacity: 1}
-  100% {opacity: 0}
-  
-}
-
 header {
   display: flex;
   justify-content: space-between;
@@ -107,6 +88,7 @@ header .logo-link img {
   height: 3px;
   border-radius: 3px;
   background-color: #ffde59;
+  transition: all 0.3s;
 }
 
 .site-content {
@@ -114,7 +96,7 @@ header .logo-link img {
 }
 
 .with-menu .site-content {
-  transform: translateX(-250px);
+  transform: translateX(-100%);
   transition: transform 0.3s ease-in;
 }
 
@@ -395,9 +377,9 @@ h2::after {
 }
 .popup .pop_projet {
   background-color: #f1f1f1;
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
-  width: clamp(300px, 50%, 1000px);
+  width: clamp(320px, 50%, 1000px);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -429,7 +411,8 @@ h2::after {
   min-width: 260px;
 }
 .popup .pop_projet p {
-  margin: 15px 10px;
+  margin: 10px 10px;
+  line-height: 1;
 }
 
 .contact {
@@ -511,6 +494,13 @@ h2::after {
 }
 .mentions-legales h2 {
   margin-top: 30px;
+  width: 100%;
+}
+.mentions-legales h2::after {
+  display: none;
+}
+.mentions-legales h2::before {
+  display: none;
 }
 
 footer {
@@ -548,13 +538,13 @@ footer {
   }
   .navbar {
     position: fixed;
-    width: 250px;
+    width: 100vw;
     height: calc(100vh - 100px);
     background-color: #232323;
     top: 100px;
     right: 0;
     min-width: unset;
-    transform: translateX(250px);
+    transform: translateX(100vw);
     transition: transform 0.3s ease-in;
     border-left: 2px solid #ffde59;
     border-top: 2px solid #ffde59;
@@ -569,5 +559,14 @@ footer {
   .with-menu .navbar {
     transform: translateX(0);
     transition: transform 0.3s ease-in;
+  }
+  .with-menu .menu-icon span:nth-child(1) {
+    transform: translateY(10px) rotateZ(-45deg);
+  }
+  .with-menu .menu-icon span:nth-child(2) {
+    opacity: 0;
+  }
+  .with-menu .menu-icon span:nth-child(3) {
+    transform: translateY(-12px) rotateZ(45deg);
   }
 }/*# sourceMappingURL=app.css.map */
