@@ -315,12 +315,11 @@ h2::after {
   width: 80%;
   min-width: 300px;
   max-width: 1200px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 300px);
+  display: flex;
   gap: 10px;
-  grid-auto-flow: row;
   justify-content: center;
   margin-top: 30px;
+  flex-wrap: wrap;
 }
 .portfolio h2 {
   margin: auto;
@@ -331,7 +330,7 @@ h2::after {
   border-radius: 10px;
 }
 .projet img {
-  width: 100%;
+  width: 300px;
   cursor: pointer;
   border-radius: 10px;
 }
