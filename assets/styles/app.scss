@@ -42,17 +42,18 @@ header {
     flex-wrap: wrap;
     height: 100px;
     width: 100%;
-    background: #232323;
+    background: #f4bd02;
     position: fixed;
     top: 0;
     z-index: 900;
     align-items: center;
+    filter: drop-shadow(0px 1px 1px #171717) ;
 
     & .logo-link {
         display: flex;
         width: 200px;
         height: 100%;
-        background-color: #ffde59;
+        
 
         & img {
             width: 100px;
@@ -66,7 +67,7 @@ header {
 
 
 .navbar {
-    width: 40%;
+    width: 63%;
     min-width: 400px;
 
 
@@ -81,14 +82,15 @@ header {
             padding: 10px 15px;
             border-radius: 20px;
             transition: all 0.3s;
-            color: #a3a3a3;
+            color: #121212ee;
+            font-weight: 700;
 
             &.active {
-                color: #ffde59
+                color: #555555
             }
 
             &:hover {
-                color: #ffde59;
+                color: #555555;
             }
 
         }
@@ -109,9 +111,9 @@ header {
     & span {
         display: block;
         width: 100%;
-        height: 3px;
+        height: 4px;
         border-radius: 3px;
-        background-color: #ffde59;
+        background-color: #171717;
         transition: all 0.3s;
     }
 }
@@ -146,7 +148,7 @@ h1 {
 
 h2 {
     font-size: 25px;
-    padding: 0px 20px 12px 0;
+    padding: 0px 20px 11px 0;
     position: relative;
     width: max-content;
     margin-bottom: 20px;
@@ -159,7 +161,7 @@ h2 {
         height: 3px;
         position: absolute;
         bottom: 1px;
-        background-color: #ffde59;
+        background-color: #f4bd02;
         border-radius: 2px;
     }
 
@@ -170,7 +172,7 @@ h2 {
         position: absolute;
         bottom: 0px;
         left: 0;
-        background-color: #ffde59;
+        background-color: #f4bd02;
         border-radius: 6px;
     }
 }
@@ -179,18 +181,23 @@ h2 {
 .accueil {
     width: 100%;
     height: calc(100vh - 100px);
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    display: flex;
-    justify-content: center;
+    background:radial-gradient(circle at 0% 0%, rgba(76, 76, 76, 1) 0%, rgba(23, 23, 23, 1) 41%, rgba(23, 23, 23, 1) 100%);    display: flex;
+    justify-content: space-evenly;
     align-items: center;
 
+    & .img_accueil {
+        align-self: flex-end;
+        
+        bottom: 0;
+        opacity: 0.8;
+        max-height: 90%;
+    }
+
     & .accueil-text {
-        width: clamp(300px, 50%, 500px);
-        background-color: rgba(18, 18, 18, 0.932);
+        width: clamp(300px, 55%, 500px);
+        background-color: #12121200;
         border-radius: 20px;
-        padding: 80px 20px 20px;
+        padding: 40px 0px 20px;
         position: relative;
         opacity: 1;
 
@@ -199,8 +206,8 @@ h2 {
             width: 60%;
             height: 3px;
             position: absolute;
-            top: 21px;
-            background-color: #ffde59;
+            top: 20px;
+            background-color: #f4bd02;
             border-radius: 2px;
         }
 
@@ -209,20 +216,27 @@ h2 {
             width: 20%;
             height: 5px;
             position: absolute;
-            top: 20px;
-            background-color: #ffde59;
+            top: 19px;
+            background-color: #f4bd02;
             border-radius: 6px;
         }
 
-        & h2 {
+        & h1 {
             width: 100%;
             color: #f1f1f1;
+            margin-bottom: 0px;
+            padding-bottom:5px ;
         }
 
         & p {
             font-size: 25px;
-            margin-bottom: 20px;
-            color: #f1f1f1
+            margin-bottom: 10px;
+            color: #f1f1f1;
+
+            & span {
+                display: inline-block;
+                width: max-content
+            }
         }
 
     }
@@ -268,7 +282,7 @@ h2 {
             margin-top: 20px;
             display: block;
             padding:10px 15px;
-            background: #ffed59;
+            background: #f4bd02;
             text-align: center;
             color: #232323;
             border-radius: 10px;
@@ -308,7 +322,7 @@ h2 {
         width: 80px;
         height: 80px;
         border-radius: 40px;
-        border: 2px solid #ffde59;
+        border: 2px solid #f4bd02;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -319,7 +333,7 @@ h2 {
         & svg {
             width: 70% !important;
             height: 70% !important;
-            fill: #ffde59 !important;
+            fill: #f4bd02 !important;
 
         }
 
@@ -340,7 +354,7 @@ h2 {
         }
 
         &:hover {
-            background-color: #ffde59;
+            background-color: #f4bd02;
 
             & p {
                 transform: translateY(0);
@@ -398,7 +412,7 @@ h2 {
         position: absolute;
         width: 100%;
         height: 100%;
-        background-color: #ffde59;
+        background-color: #f4bd02;
         transition: all 0.3s;
         opacity: 0;
         font-size: 200px;
@@ -490,13 +504,36 @@ h2 {
 
 .contact {
     @include section(column);
-    background-color: #ececec;
+    background-color: #f4bd02;
+
+    & h2 {
+        &::before {
+            content: "";
+            width: 100%;
+            height: 3px;
+            position: absolute;
+            bottom: 1px;
+            background-color: #171717;
+            border-radius: 2px;
+        }
+
+        &::after {
+            content: "";
+            width: 30%;
+            height: 5px;
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            background-color: #171717;
+            border-radius: 6px;
+          }
+    }
 }
 
 .contact_form {
     width: 50%;
     min-width: 300px;
-    margin: auto;
+    margin: 25px auto 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     row-gap: 50px;
@@ -525,21 +562,24 @@ h2 {
     grid-column: 2 / 3;
     width: 100%;
     position: relative;
+    
 
     & button {
+        color:#f4bd02;
+        font-weight: 700;
         position: absolute;
         right: 0;
         padding: 10px 25px;
         text-transform: uppercase;
         border: none;
-        background-color: #ffde59;
+        background-color: #171717;
         border-radius: 10px;
         cursor: pointer;
     }
 }
 
 .form-field {
-    padding: 5px;
+    padding: 5px 5px 0px 2px;
     outline: none;
     background-color: transparent;
     border: none;

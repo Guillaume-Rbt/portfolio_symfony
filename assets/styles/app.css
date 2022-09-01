@@ -31,17 +31,17 @@ header {
   flex-wrap: wrap;
   height: 100px;
   width: 100%;
-  background: #232323;
+  background: #f4bd02;
   position: fixed;
   top: 0;
   z-index: 900;
   align-items: center;
+  filter: drop-shadow(0px 1px 1px #171717);
 }
 header .logo-link {
   display: flex;
   width: 200px;
   height: 100%;
-  background-color: #ffde59;
 }
 header .logo-link img {
   width: 100px;
@@ -50,7 +50,7 @@ header .logo-link img {
 }
 
 .navbar {
-  width: 40%;
+  width: 63%;
   min-width: 400px;
 }
 .navbar ul {
@@ -64,13 +64,14 @@ header .logo-link img {
   padding: 10px 15px;
   border-radius: 20px;
   transition: all 0.3s;
-  color: #a3a3a3;
+  color: rgba(18, 18, 18, 0.9333333333);
+  font-weight: 700;
 }
 .navbar ul li.active {
-  color: #ffde59;
+  color: #555555;
 }
 .navbar ul li:hover {
-  color: #ffde59;
+  color: #555555;
 }
 
 .menu-icon {
@@ -85,9 +86,9 @@ header .logo-link img {
 .menu-icon span {
   display: block;
   width: 100%;
-  height: 3px;
+  height: 4px;
   border-radius: 3px;
-  background-color: #ffde59;
+  background-color: #171717;
   transition: all 0.3s;
 }
 
@@ -117,7 +118,7 @@ h1 {
 
 h2 {
   font-size: 25px;
-  padding: 0px 20px 12px 0;
+  padding: 0px 20px 11px 0;
   position: relative;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -131,7 +132,7 @@ h2::before {
   height: 3px;
   position: absolute;
   bottom: 1px;
-  background-color: #ffde59;
+  background-color: #f4bd02;
   border-radius: 2px;
 }
 h2::after {
@@ -141,25 +142,29 @@ h2::after {
   position: absolute;
   bottom: 0px;
   left: 0;
-  background-color: #ffde59;
+  background-color: #f4bd02;
   border-radius: 6px;
 }
 
 .accueil {
   width: 100%;
   height: calc(100vh - 100px);
-  background-size: cover;
-  background-position: center;
-  position: relative;
+  background: radial-gradient(circle at 0% 0%, rgb(76, 76, 76) 0%, rgb(23, 23, 23) 41%, rgb(23, 23, 23) 100%);
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 }
+.accueil .img_accueil {
+  align-self: flex-end;
+  bottom: 0;
+  opacity: 0.8;
+  max-height: 90%;
+}
 .accueil .accueil-text {
-  width: clamp(300px, 50%, 500px);
-  background-color: rgba(18, 18, 18, 0.932);
+  width: clamp(300px, 55%, 500px);
+  background-color: rgba(18, 18, 18, 0);
   border-radius: 20px;
-  padding: 80px 20px 20px;
+  padding: 40px 0px 20px;
   position: relative;
   opacity: 1;
 }
@@ -168,8 +173,8 @@ h2::after {
   width: 60%;
   height: 3px;
   position: absolute;
-  top: 21px;
-  background-color: #ffde59;
+  top: 20px;
+  background-color: #f4bd02;
   border-radius: 2px;
 }
 .accueil .accueil-text::after {
@@ -177,18 +182,26 @@ h2::after {
   width: 20%;
   height: 5px;
   position: absolute;
-  top: 20px;
-  background-color: #ffde59;
+  top: 19px;
+  background-color: #f4bd02;
   border-radius: 6px;
 }
-.accueil .accueil-text h2 {
+.accueil .accueil-text h1 {
   width: 100%;
   color: #f1f1f1;
+  margin-bottom: 0px;
+  padding-bottom: 5px;
 }
 .accueil .accueil-text p {
   font-size: 25px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: #f1f1f1;
+}
+.accueil .accueil-text p span {
+  display: inline-block;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
 }
 
 .àpropos {
@@ -238,7 +251,7 @@ h2::after {
   margin-top: 20px;
   display: block;
   padding: 10px 15px;
-  background: #ffed59;
+  background: #f4bd02;
   text-align: center;
   color: #232323;
   border-radius: 10px;
@@ -292,7 +305,7 @@ h2::after {
   width: 80px;
   height: 80px;
   border-radius: 40px;
-  border: 2px solid #ffde59;
+  border: 2px solid #f4bd02;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -303,7 +316,7 @@ h2::after {
 .container-icon div svg {
   width: 70% !important;
   height: 70% !important;
-  fill: #ffde59 !important;
+  fill: #f4bd02 !important;
 }
 .container-icon div p {
   width: 100%;
@@ -321,7 +334,7 @@ h2::after {
   font-weight: 700;
 }
 .container-icon div:hover {
-  background-color: #ffde59;
+  background-color: #f4bd02;
 }
 .container-icon div:hover p {
   transform: translateY(0);
@@ -375,7 +388,7 @@ h2::after {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #ffde59;
+  background-color: #f4bd02;
   transition: all 0.3s;
   opacity: 0;
   font-size: 200px;
@@ -459,13 +472,32 @@ h2::after {
   gap: 20px;
   flex-wrap: wrap;
   padding: 100px 0;
-  background-color: #ececec;
+  background-color: #f4bd02;
+}
+.contact h2::before {
+  content: "";
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  bottom: 1px;
+  background-color: #171717;
+  border-radius: 2px;
+}
+.contact h2::after {
+  content: "";
+  width: 30%;
+  height: 5px;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  background-color: #171717;
+  border-radius: 6px;
 }
 
 .contact_form {
   width: 50%;
   min-width: 300px;
-  margin: auto;
+  margin: 25px auto 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   row-gap: 50px;
@@ -496,18 +528,20 @@ h2::after {
   position: relative;
 }
 .submit button {
+  color: #f4bd02;
+  font-weight: 700;
   position: absolute;
   right: 0;
   padding: 10px 25px;
   text-transform: uppercase;
   border: none;
-  background-color: #ffde59;
+  background-color: #171717;
   border-radius: 10px;
   cursor: pointer;
 }
 
 .form-field {
-  padding: 5px;
+  padding: 5px 5px 0px 2px;
   outline: none;
   background-color: transparent;
   border: none;
@@ -567,6 +601,20 @@ footer {
     width: 100%;
   }
 }
+@media screen and (max-width: 810px) {
+  .accueil {
+    padding: 50px 10px;
+    align-items: flex-start;
+  }
+  .accueil .img_accueil {
+    position: absolute;
+    bottom: 0;
+    width: 51%;
+    min-width: 310px;
+    align-self: center;
+    justify-self: end;
+  }
+}
 @media screen and (max-width: 700px) {
   .menu-icon {
     display: flex;
@@ -575,14 +623,13 @@ footer {
     position: fixed;
     width: 100vw;
     height: calc(100vh - 100px);
-    background-color: #232323;
+    background-color: #f4bd02;
     top: 100px;
     right: 0;
     min-width: unset;
     transform: translateX(100vw);
     transition: transform 0.3s ease-in;
-    border-left: 2px solid #ffde59;
-    border-top: 2px solid #ffde59;
+    border-top: 2px solid #171717;
   }
   .navbar ul {
     flex-direction: column;
@@ -602,6 +649,6 @@ footer {
     opacity: 0;
   }
   .with-menu .menu-icon span:nth-child(3) {
-    transform: translateY(-12px) rotateZ(45deg);
+    transform: translateY(-11px) rotateZ(45deg);
   }
 }/*# sourceMappingURL=app.css.map */
