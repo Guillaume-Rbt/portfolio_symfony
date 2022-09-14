@@ -19,32 +19,32 @@ class FrontController extends AbstractController
 {
     #[Route('/', name: 'app_front')]
     public function index(ProjectRepository $repoProject, ConfigRepository $repoConfig,  Request $request, MailerInterface $mailer): Response
-    { 
-        
-        $config = $repoConfig->findAll()[0] ;
+    {
+
+        $config = $repoConfig->findAll()[0];
         $projects = $repoProject->findAll();
 
         $now = new \DateTime(date('Y-m-d'));
         $birth = date_create_from_format('d/m/Y', $config->getBirthDate());
         $age = $now->diff($birth, true)->format('%Y');
-         
+
         $contact = $this->createForm(ContactType::class);
         $contact->handleRequest($request);
 
-        if($contact->isSubmitted() && $contact->isValid()) {
+        if ($contact->isSubmitted() && $contact->isValid()) {
             $contactFormData = $contact->getData();
             $mail = (new TemplatedEmail())
-            ->to(New Address("contact@guillaume-robert-webdev.fr"))
-            ->from('contact@guillaume-robert-webdev.fr')
-            ->subject('Contact portfolio')
-            ->htmlTemplate('email/contact.html.twig')
-            ->context([
-                'nom' => $contactFormData['nom'],
-                'prenom' =>$contactFormData['prenom'],
-                "adressMail" => $contactFormData['adressMail'],
-                'sujet' =>$contactFormData['sujet'],
-                'content' =>$contactFormData['content']
-            ]);
+                ->to(new Address("contact@guillaume-robert-webdev.fr"))
+                ->from('contact@guillaume-robert-webdev.fr')
+                ->subject('Contact portfolio')
+                ->htmlTemplate('email/contact.html.twig')
+                ->context([
+                    'nom' => $contactFormData['nom'],
+                    'prenom' => $contactFormData['prenom'],
+                    "adressMail" => $contactFormData['adressMail'],
+                    'sujet' => $contactFormData['sujet'],
+                    'content' => $contactFormData['content']
+                ]);
 
             $mailer->send($mail);
 
@@ -52,26 +52,23 @@ class FrontController extends AbstractController
             $this->redirectToRoute('app_front');
         }
 
-        
-        
-
         return $this->render('front/index.html.twig', [
             'controller_name' => 'FrontController',
             'contactForm' => $contact->createView(),
-            'projects' => $projects, 
+            'projects' => $projects,
             'config' => $config,
             'age' => $age
-        ]); 
+        ]);
     }
 
 
-    #[Route("/mentions-legales", name:"mentions_legales")]
-    public function mentions_legales (ConfigRepository $repoConfig) {
+    #[Route("/mentions-legales", name: "mentions_legales")]
+    public function mentions_legales(ConfigRepository $repoConfig)
+    {
         $config = $repoConfig->findAll()[0];
 
         return $this->render('front/mentions-legales.html.twig', [
             'config' => $config
         ]);
     }
-
 }

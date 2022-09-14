@@ -21,8 +21,9 @@
 
 @media screen and (max-width:810px) { 
     .accueil {
-        padding: 50px 10px;
+        padding: 20px 10px;
         align-items: flex-start;
+        width: 100%;
         
         
         & .img_accueil {
@@ -37,6 +38,14 @@
 
 
 }
+@media screen and (max-height:650px) {
+    .accueil-text {
+        & p {
+            font-size: 18px !important ;
+        }
+
+    }
+ }
 
 
 
