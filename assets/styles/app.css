@@ -427,7 +427,7 @@ h2::after {
   background-color: #f1f1f1;
   padding: 10px;
   border-radius: 10px;
-  width: clamp(320px, 50%, 1000px);
+  width: clamp(320px, 80%, 1000px);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -659,5 +659,10 @@ footer {
 @media screen and (max-height: 650px) {
   .accueil-text p {
     font-size: 18px !important;
+  }
+}
+@media screen and (max-width: 430px) {
+  .pop_projet h2 {
+    font-size: 20px;
   }
 }/*# sourceMappingURL=app.css.map */
