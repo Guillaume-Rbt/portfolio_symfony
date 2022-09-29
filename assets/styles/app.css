@@ -601,7 +601,7 @@ footer {
     width: 100%;
   }
 }
-@media screen and (max-width: 810px) {
+@media screen and (max-width: 820px) {
   .accueil {
     padding: 20px 10px;
     align-items: flex-start;
@@ -615,13 +615,6 @@ footer {
     align-self: center;
     justify-self: end;
   }
-}
-@media screen and (max-height: 650px) {
-  .accueil-text p {
-    font-size: 18px !important;
-  }
-}
-@media screen and (max-width: 700px) {
   .menu-icon {
     display: flex;
   }
@@ -656,5 +649,15 @@ footer {
   }
   .with-menu .menu-icon span:nth-child(3) {
     transform: translateY(-11px) rotateZ(45deg);
+  }
+}
+@media screen and (max-width: 820px) and (min-height: 900px) {
+  .accueil-text {
+    transform: translateY(17vh);
+  }
+}
+@media screen and (max-height: 650px) {
+  .accueil-text p {
+    font-size: 18px !important;
   }
 }/*# sourceMappingURL=app.css.map */
