@@ -10,6 +10,10 @@
 <div class="success"> {{ message }} </div>
 {% endfor %}
 
+{% for message in app.flashes('mailError') %}
+<div class="error"> {{ message }} </div>
+{% endfor %}
+
 	<div class="accueil" >
 	<img src="{{ asset('assets/photo_portfolio.png') }}" alt="" class="img_accueil">
 	<div id="accueil-text" class="accueil-text">
@@ -156,6 +160,18 @@
 			{{ form_row(contactForm.submit) }}
 		</div>
 		{{ form_end(contactForm) }}
+
+		<script src="https://www.google.com/recaptcha/api.js?render=6LfodQgjAAAAABNHY0EEmJizDr3gaJoaS3zXnf2y"></script>
+
+<script>
+    
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6LfodQgjAAAAABNHY0EEmJizDr3gaJoaS3zXnf2y', {action: 'submit'}).then(function(token) {
+              document.getElementById("contact_recaptchaResponse").value = token
+          });
+        });
+      
+  </script>
 
 	</section>
 

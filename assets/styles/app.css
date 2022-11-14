@@ -266,11 +266,24 @@ h2::after {
   top: 100px;
   right: 5px;
   z-index: 800;
-  -webkit-animation: animSucess 4s linear forwards;
-          animation: animSucess 4s linear forwards;
+  -webkit-animation: animMessage 4s linear forwards;
+          animation: animMessage 4s linear forwards;
 }
 
-@-webkit-keyframes animSucess {
+.error {
+  padding: 10px 25px;
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  position: fixed;
+  top: 100px;
+  right: 5px;
+  z-index: 800;
+  -webkit-animation: animMessage 4s linear forwards;
+          animation: animMessage 4s linear forwards;
+}
+
+@-webkit-keyframes animMessage {
   0% {
     opacity: 1;
   }
@@ -282,7 +295,7 @@ h2::after {
   }
 }
 
-@keyframes animSucess {
+@keyframes animMessage {
   0% {
     opacity: 1;
   }

@@ -32,24 +32,44 @@ class FrontController extends AbstractController
         $contact->handleRequest($request);
 
         if ($contact->isSubmitted() && $contact->isValid()) {
+
             $contactFormData = $contact->getData();
-            $mail = (new TemplatedEmail())
-                ->to(new Address("contact@guillaume-robert-webdev.fr"))
-                ->from('contact@guillaume-robert-webdev.fr')
-                ->subject('Contact portfolio')
-                ->htmlTemplate('email/contact.html.twig')
-                ->context([
-                    'nom' => $contactFormData['nom'],
-                    'prenom' => $contactFormData['prenom'],
-                    "adressMail" => $contactFormData['adressMail'],
-                    'sujet' => $contactFormData['sujet'],
-                    'content' => $contactFormData['content']
-                ]);
 
-            $mailer->send($mail);
+            if (empty($contactFormData["recaptchaResponse"])) {
+                $this->redirectToRoute('app_front');
+            } else {
+                $url = "https://www.google.com/recaptcha/api/siteverify?secret=SITE_KEY&response={$contactFormData["recaptchaResponse"]}";
+                $response = file_get_contents($url);
 
-            $this->addFlash('mailSuccess', 'Votre message a bien été envoyé');
-            $this->redirectToRoute('app_front');
+                if (empty($response) || is_null($response)) {
+                    $this->redirectToRoute('app_front');
+                } else {
+                    $data = json_decode($response);
+
+                    if ($data->success) {
+                        $mail = (new TemplatedEmail())
+                            ->to(new Address("contact@guillaume-robert-webdev.fr"))
+                            ->from('contact@guillaume-robert-webdev.fr')
+                            ->subject('Contact portfolio')
+                            ->htmlTemplate('email/contact.html.twig')
+                            ->context([
+                                'nom' => $contactFormData['nom'],
+                                'prenom' => $contactFormData['prenom'],
+                                "adressMail" => $contactFormData['adressMail'],
+                                'sujet' => $contactFormData['sujet'],
+                                'content' => $contactFormData['content']
+                            ]);
+
+                        $mailer->send($mail);
+
+                        $this->addFlash('mailSuccess', 'Votre message a bien été envoyé');
+                        $this->redirectToRoute('app_front');
+                    } else if (!$data->success) {
+                        $this->addFlash('mailError', 'Erreur reCAPTCHA veuillez recommencer');
+                        $this->redirectToRoute('app_front');
+                    }
+                }
+            }
         }
 
         return $this->render('front/index.html.twig', [
